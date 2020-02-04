@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-class WindowObj1GluoncvFinetune(QtWidgets.QWidget):
+class WindowObj4Efficientdet(QtWidgets.QWidget):
 
     backward_obj = QtCore.pyqtSignal();
     forward_train = QtCore.pyqtSignal();
@@ -14,13 +14,12 @@ class WindowObj1GluoncvFinetune(QtWidgets.QWidget):
 
     def __init__(self):
         super().__init__()
-        self.title = 'Object Detection - GluonCV Finetune'
+        self.title = 'Object Detection - Efficient Detection'
         self.left = 100
         self.top = 100
         self.width = 800
         self.height = 600
         self.initUI()
-
 
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -62,7 +61,7 @@ class WindowObj1GluoncvFinetune(QtWidgets.QWidget):
 
         #Install
         self.cb4 = QComboBox(self);
-        self.cudas = ["Cuda-9.0", "Cuda-9.1", "Cuda-10.0", "Cuda-10.1"];
+        self.cudas = ["Cuda"];
         self.cb4.addItems(self.cudas);
         self.cb4.move(20, 110);
 
@@ -85,7 +84,6 @@ class WindowObj1GluoncvFinetune(QtWidgets.QWidget):
         self.process.readyReadStandardOutput.connect(self.stdoutReady)
         self.process.readyReadStandardError.connect(self.stderrReady)
         self.process.setProcessChannelMode(QtCore.QProcess.MergedChannels)
-
 
 
     def stdoutReady(self):
@@ -113,41 +111,27 @@ class WindowObj1GluoncvFinetune(QtWidgets.QWidget):
 
     def install(self):
         self.tb1.setText("Installation Running");
-        if(self.cb4.currentText() == "Cuda-9.0"):
-            os.system("cp cfg/install_obj_1_gluoncv_finetune_cuda90.sh .");
-            os.system("chmod +x install_obj_1_gluoncv_finetune_cuda90.sh");
-            self.process.start('bash', ['install_obj_1_gluoncv_finetune_cuda90.sh'])
+        if(self.cb4.currentText() == "Cuda"):
+            os.system("cp cfg/detection/object_detection/obj_4_efficientdet/install_obj_4_efficientdet_cuda.sh .");
+            os.system("chmod +x install_obj_4_efficientdet_cuda.sh");
+            self.process.start('bash', ['install_obj_4_efficientdet_cuda.sh'])
             self.append("Process PID: " + str(self.process.pid()) + "\n");
-        elif(self.cb4.currentText() == "Cuda-9.1"):
-            os.system("cp cfg/install_obj_1_gluoncv_finetune_cuda91.sh .");
-            os.system("chmod +x install_obj_1_gluoncv_finetune_cuda91.sh");
-            self.process.start('bash', ['install_obj_1_gluoncv_finetune_cuda91.sh'])
-            self.append("Process PID: " + str(self.process.pid()) + "\n");
-        elif(self.cb4.currentText() == "Cuda-10.0"):
-            os.system("cp cfg/install_obj_1_gluoncv_finetune_cuda10.sh .");
-            os.system("chmod +x install_obj_1_gluoncv_finetune_cuda10.sh");
-            self.process.start('bash', ['install_obj_1_gluoncv_finetune_cuda10.sh'])
-            self.append("Process PID: " + str(self.process.pid()) + "\n");
-        elif(self.cb4.currentText() == "Cuda-10.1"):
-            os.system("cp cfg/install_obj_1_gluoncv_finetune_cuda101.sh .");
-            os.system("chmod +x install_obj_1_gluoncv_finetune_cuda101.sh");
-            self.process.start('bash', ['install_obj_1_gluoncv_finetune_cuda101.sh'])
-            self.append("Process PID: " + str(self.process.pid()) + "\n");
-
-
-
-
-
-
-
 
 
     def forward1(self):
-    	self.forward_train.emit();
+        self.forward_train.emit();
 
     def forward2(self):
         self.forward_infer.emit();
 
     def backward(self):
-    	self.backward_obj.emit();
+        self.backward_obj.emit();
+
+
+'''
+app = QApplication(sys.argv)
+screen = WindowObj4Efficientdet()
+screen.show()
+sys.exit(app.exec_())
+'''
 

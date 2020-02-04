@@ -1,4 +1,4 @@
-# Monk_Gui [![HitCount](http://hits.dwyl.io/Tessellate-Imaging/Monk_Gui.svg)](http://hits.dwyl.io/Tessellate-Imaging/Monk_Gui)
+# Monk_Gui [![HitCount](http://hits.dwyl.io/Tessellate-Imaging/Monk_Gui.svg)](http://hits.dwyl.io/Tessellate-Imaging/Monk_Gui) ![](https://tokei.rs/b1/github/Tessellate-Imaging/Monk_Gui) ![](https://tokei.rs/b1/github/Tessellate-Imaging/Monk_Gui?category=files)
 
 A Graphical user Interface for deep learning and computer vision over Monk Libraries
 <br />
@@ -16,6 +16,7 @@ A Graphical user Interface for deep learning and computer vision over Monk Libra
     - Monk is a low code Deep Learning tool and a unified wrapper for Computer Vision. 
 - B) Monk Object Detection - https://github.com/Tessellate-Imaging/Monk_Object_Detection
     - A one-stop repository for low-code easily-installable object detection pipelines. 
+    - Check licenses of each pipeline before using 
 <br />
 <br />
 <br />
